@@ -17,7 +17,10 @@ class UserSerializer(serializers.ModelSerializer):
         user = UserModel.objects.create(
             nickname=validated_data['nickname'],
             full_name=validated_data['full_name'],
-            email=validated_data['email']
+            email=validated_data['email'],
+            group_number=validated_data['group_number'],
+            couser=validated_data['course'],
+            is_student=True
         )
         user.set_password(validated_data['password'])
         user.save()
@@ -26,4 +29,4 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = UserModel
-        fields = ( "id", "nickname", "password", "full_name", "email")
+        fields = ( "id", "nickname", "password", "full_name", "email", "group_number", "course")
