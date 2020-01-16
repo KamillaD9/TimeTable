@@ -1,0 +1,7 @@
+{
+  "django_secret_key": "t47jr@y@wiw9gi$zw48wrgcf3yg@hpjq95&r!)p^-z6*%!_1!d",
+  "vk_api_key": "8cc3a86054bc3c9073a966cb3e4fa6e415f8cf0eba1f3eb61513cf408c9fa0185caaef193fd1d753930b2",
+  "SOCIAL_AUTH_VK_OAUTH2_KEY": "6968288",
+  "SOCIAL_AUTH_VK_OAUTH2_SECRET": "peDoCtzHAq18T9yKb0y1",
+  "POSTGRES_PASSWORD": "verystrongpassword"
+}
