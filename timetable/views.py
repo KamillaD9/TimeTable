@@ -40,8 +40,6 @@ class DayView(APIView):
 class DayList(generics.ListAPIView):
     serializer_class = DaySerializer
 
-    permission_classes = [permissions.IsAuthenticated]
-
     def get_queryset(self):
         return Day.objects.all()
 

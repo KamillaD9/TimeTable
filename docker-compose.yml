@@ -1,0 +1,41 @@
+version: '2'
+
+volumes:
+    pgdata:
+        driver: local
+
+services:
+    nginx:
+        restart: always
+        image: nginx:latest
+        expose:
+          - 8080
+        ports:
+          - "80:8080"
+        volumes:
+            - ./PSAMI_Olymp/logs:/srv/PSAMI_Olymp/logs
+            - ./docker/nginx:/etc/nginx/conf.d
+            - ./PSAMI_Olymp/static:/srv/PSAMI_Olymp/static 
+            - ./PSAMI_Olymp/static/media:/srv/PSAMI_Olymp/static/media
+        depends_on:
+            - python
+    python:
+        restart: always
+        build:
+            context: .
+            dockerfile: docker/python/Dockerfile
+        volumes:
+            - ./PSAMI_Olymp/static:/srv/PSAMI_Olymp/static 
+            - ./PSAMI_Olymp/static/media:/srv/PSAMI_Olymp/static/media
+        expose:
+          - 8000
+        ports:
+            - 8000:8000
+        command: bash -c "python manage.py migrate && python manage.py collectstatic --noinput && gunicorn -c gunicorn_conf.py fpmi_olymp.wsgi" 
+        depends_on:
+            - db
+
+    db:
+        restart: always
+        image: postgres:latest
+        container_name: ps01

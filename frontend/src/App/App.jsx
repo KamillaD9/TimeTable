@@ -8,6 +8,7 @@ import { PrivateRoute } from '../_components';
 import { HomePage } from '../HomePage';
 import { LoginPage } from '../LoginPage';
 import { RegisterPage } from '../RegisterPage';
+import { LogoutPage } from "../LogoutPage";
 
 
 class App extends React.Component {
@@ -20,6 +21,8 @@ class App extends React.Component {
             this.props.clearAlerts();
         });
     }
+
+
 
     render() {
         const { alert } = this.props;
@@ -35,6 +38,7 @@ class App extends React.Component {
                                 <Route exact path="/" component={HomePage} />
                                 <Route path="/login" component={LoginPage} />
                                 <Route path="/register" component={RegisterPage} />
+                                <Route path="/logout" component={LogoutPage} />
                                 <Redirect from="*" to="/" />
                             </Switch>
                         </Router>

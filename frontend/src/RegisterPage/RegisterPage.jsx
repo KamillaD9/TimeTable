@@ -110,7 +110,10 @@ class RegisterPage extends React.Component {
 
 function mapState(state) {
     const { registering } = state.registration;
-    return { registering };
+    return {
+        registering ,
+        authenticated: state.auth.authenticated
+    };
 }
 
 const actionCreators = {

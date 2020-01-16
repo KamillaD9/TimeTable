@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { browserHistory } from 'react-router';
+import { history } from '../_helpers';
 import { AUTH_USER, UNAUTH_USER, AUTH_ERROR, FETCH_MESSAGE } from './types';
 
 const host = window.location.host.split(':')[0];
@@ -29,7 +29,7 @@ export function signinUser({username, password}) {
 		 localStorage.setItem('token', response.data.token);
 		 console.log("Token saved!");
 		 // - redirect to /feature
-		 browserHistory.push('/');
+		 history.push('/');
 		 console.log("Redirected to /");
 
 	     })
@@ -54,7 +54,7 @@ export function signupUser({nickname, password, full_name, email, group_number, 
 		 // - save JWT token
 		 localStorage.setItem('token', response.data.token);
 		 // - redirect to /feature
-		 browserHistory.push('/');
+		 history.push('/');
 	     })
 	     .catch(() => {
 		 // if request is bad - add error to the state.
@@ -72,7 +72,7 @@ export function signoutUser() {
     console.log("Signing out user, deleting token from localStorage.");
     localStorage.removeItem('token');
     console.log("Redirecting to /, and dispatching action UNAUTH_USER.");
-    browserHistory.push('/');
+    history.push('/');
     return {
 	type: UNAUTH_USER
     };

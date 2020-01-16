@@ -18,7 +18,10 @@ class DaySerializer(serializers.ModelSerializer):
     def get_periods(self, day):
         user = self.context['request'].user
 
-        if user.is_student:
+
+        if user.is_anonymous:
+            qs = []
+        elif user.is_student:
             qs = Period.objects.filter(group_number=user.group_number, day=day)
         elif user.is_teacher:
             qs = Period.objects.filter(teacher=user, day=day)
