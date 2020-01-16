@@ -8,6 +8,7 @@ export const FETCH_TIMETABLE = 'FETCH_TIMETABLE';
 
 export function fetchTimetable(slug) {
     return function(dispatch) {
+    	console.log(localStorage.getItem('token') );
 	axios.get(`${ROOT_URL}/timetable/`, { 'headers': { 'Authorization': 'Token ' + localStorage.getItem('token') } })
 	     .then(response => {
 

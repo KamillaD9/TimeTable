@@ -26,7 +26,9 @@ export function signinUser({username, password}) {
 		 dispatch({ type: AUTH_USER});
 		 console.log("Auth action dispatched(to flip auth state to true)");
 		 // - save JWT token
-		 localStorage.setItem('token', response.data.token);
+			 console.log(localStorage.getItem('token') );
+		 localStorage.setItem('token', response.data.key);
+		 console.log(localStorage.getItem('token') );
 		 console.log("Token saved!");
 		 // - redirect to /feature
 		 history.push('/');

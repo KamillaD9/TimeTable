@@ -73,13 +73,13 @@ MIDDLEWARE = [
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOW_CREDENTIALS = True
-CORS_ORIGIN_WHITELIST = [
-    'http://localhost:8080',
-]
-CORS_ORIGIN_REGEX_WHITELIST = [
-    'http://localhost:8080',
-]
+# CORS_ALLOW_CREDENTIALS = True
+# CORS_ORIGIN_WHITELIST = [
+#     'http://localhost:8080',
+# ]
+# CORS_ORIGIN_REGEX_WHITELIST = [
+#     'http://localhost:8080',
+# ]
 
 ROOT_URLCONF = 'backend.urls'
 
@@ -154,7 +154,9 @@ STATIC_URL = '/static/'
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         # 'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.BasicAuthentication',
+        # 'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.TokenAuthentication',  # <-- And here
     ],
 }
+
+CORS_ORIGIN_ALLOW_ALL = True
