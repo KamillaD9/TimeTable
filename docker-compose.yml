@@ -13,10 +13,10 @@ services:
         ports:
           - "80:8080"
         volumes:
-            - ./PSAMI_Olymp/logs:/srv/PSAMI_Olymp/logs
+            - ./TimeTableL/logs:/srv/TimeTable/logs
             - ./docker/nginx:/etc/nginx/conf.d
-            - ./PSAMI_Olymp/static:/srv/PSAMI_Olymp/static 
-            - ./PSAMI_Olymp/static/media:/srv/PSAMI_Olymp/static/media
+            - ./TimeTableL/static:/srv/TimeTable/static
+            - ./TimeTableL/static/media:/srv/TimeTable/static/media
         depends_on:
             - python
     python:
@@ -25,13 +25,13 @@ services:
             context: .
             dockerfile: docker/python/Dockerfile
         volumes:
-            - ./PSAMI_Olymp/static:/srv/PSAMI_Olymp/static 
-            - ./PSAMI_Olymp/static/media:/srv/PSAMI_Olymp/static/media
+            - ./TimeTableL/static:/srv/TimeTable/static
+            - ./TimeTableL/static/media:/srv/TimeTable/static/media
         expose:
           - 8000
         ports:
             - 8000:8000
-        command: bash -c "python manage.py migrate && python manage.py collectstatic --noinput && gunicorn -c gunicorn_conf.py fpmi_olymp.wsgi" 
+        command: bash -c "python manage.py migrate && python manage.py collectstatic --noinput && gunicorn -c gunicorn_conf.py timetable.wsgi"
         depends_on:
             - db
 
