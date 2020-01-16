@@ -31,7 +31,7 @@ services:
           - 8000
         ports:
             - 8000:8000
-        command: bash -c "python manage.py migrate &&  gunicorn -c gunicorn_conf.py timetable.wsgi"
+        command: bash -c "python manage.py migrate &&  gunicorn -c gunicorn_conf.py backend.wsgi"
         depends_on:
             - db
 
