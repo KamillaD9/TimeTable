@@ -19,7 +19,7 @@ class UserSerializer(serializers.ModelSerializer):
             full_name=validated_data['full_name'],
             email=validated_data['email'],
             group_number=validated_data['group_number'],
-            couser=validated_data['course'],
+            course=validated_data['course'],
             is_student=True
         )
         user.set_password(validated_data['password'])
