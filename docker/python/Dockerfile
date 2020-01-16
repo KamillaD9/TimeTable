@@ -14,4 +14,4 @@ RUN pip install -r requirements.txt
 
 RUN pip install gunicorn
 
-RUN pip install corsheaders
+RUN pip install django-cors-headers
